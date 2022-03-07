@@ -11,7 +11,7 @@ var enemyAttack = 12;
 // Create function 
 var fight = function(enemyName) { 
   window.alert("Welcome to Robot Gladiators!");
-  while(enemyHealth > 0) {
+  while(playerHealth > 0 && enemyHealth > 0) {
 
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
@@ -20,12 +20,13 @@ var fight = function(enemyName) {
     // remove enemy's health by subtracting the amount of set in playerAttack variable
     enemyHealth = enemyHealth - playerAttack; 
     console.log(
-      playerName + " attacked " + enemyNames + ". " + enemyNames + " now has " + enemyHealth + " health remaining."
+      playerName + " attacked " + enemyNames + " . " + enemyNames + " now has " + enemyHealth + " health remaining."
     );
 
     // Check enemy's health
     if (enemyHealth <= 0) {
       window.alert(enemyNames + " has died!");
+      break;
     } else {
       window.alert(enemyNames + " still has " + enemyHealth + " health left.");
     }
@@ -33,12 +34,13 @@ var fight = function(enemyName) {
     // Remove player's health by subtracting the amount set in the enemyAttack variable
     playerHealth = playerHealth - enemyAttack;
     console.log(
-      enemyNames + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
+      enemyNames + " attacked " + playerName + " . " + playerName + " now has " + playerHealth + " health remaining."
     );
 
     // Check player's health
     if (playerHealth <= 0) {
       window.alert(playerName + " has died!");
+      break; 
     } else {
       window.alert(playerName + " still has " + playerHealth + " health left.");
     }
@@ -52,7 +54,8 @@ var fight = function(enemyName) {
     if (confirmSkip) {
       window.alert(playerName + " has decided to skip this fight. Goodbye!");
       // Subtract money from playerMoney for skipping 
-      playerMoney = playerMoney - 2;
+      playerMoney = playerMoney - 10;
+      console.log("playerMoney", playerMoney);
     }
     // If no (false), ask question again by running fight() again
     else {
